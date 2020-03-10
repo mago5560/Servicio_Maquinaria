@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Encabezado"
+        android:icon="@drawable/encabezado"
+        android:id="@+id/nav_mmu_encabezado"/>
+
+    <item android:title="Detalle"
+        android:icon="@drawable/detalle"
+        android:id="@+id/nav_mnu_detalle"/>
+
+</menu>
