@@ -117,17 +117,19 @@ public class FragmEncabezado extends Fragment {
             fillEncabezado();
         }
 
-        ((TextView) view.findViewById(R.id.lblFecha)).setText(util.getFechaActual());
+        ((TextView) view.findViewById(R.id.lblFecha)).setText(util.getFechaHoraActual());
     }
 
     private void actions() {
 
+        /*
         ((TextView) this.view.findViewById(R.id.lblFecha)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 util.getFechaDialog(getActivity(), ((TextView) view.findViewById(R.id.lblFecha)));
             }
         });
+         */
 
         ((ImageButton) this.view.findViewById(R.id.imgbtnBuscarVehiculo)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -211,7 +213,7 @@ public class FragmEncabezado extends Fragment {
     private void iniciarRevision() {
         if (validarCampos(false)) {
             revisionControler = new RevisionControler(getActivity());
-
+            ((TextView) view.findViewById(R.id.lblFecha)).setText(util.getFechaHoraActual());
             cls = new RevisionTecleo();
             cls.setFecha(((TextView) this.view.findViewById(R.id.lblFecha)).getText().toString());
             cls.setNombrePiloto(((TextView) this.view.findViewById(R.id.lblNombrePiloto)).getText().toString());
@@ -249,6 +251,7 @@ public class FragmEncabezado extends Fragment {
             } else {
                 controler.buscarVehiculoPiloto(false,((EditText) this.view.findViewById(R.id.txtCodPiloto)).getText().toString());
             }
+
             /*
             //Cosulta en linea, se reemplaza por consulta local
             if (Vehiculo) {

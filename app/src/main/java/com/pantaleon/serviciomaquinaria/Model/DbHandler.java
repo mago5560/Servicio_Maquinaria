@@ -554,12 +554,14 @@ public class DbHandler extends SQLiteOpenHelper {
         query += " ,IFNULL(b.PunteoReal,a.PunteoReal) AS PunteoReal  ";
         query += " ,IFNULL(b.Ponderacion,a.Ponderacion) AS  Ponderacion ";
         query += " ,b.Observaciones ";
-        query += " FROM  "+ TBL_REVISION_DETALLE  + " b ";
-        query += " INNER JOIN  " +  TBL_SERVICIO_DETALLE   +" a ON b.IdServicioDetalle = a.Id";
-        query += " WHERE 1 = 1 ";
+        query += " FROM " + TBL_SERVICIO_DETALLE  +" a ";
+        query += " LEFT JOIN  (";
+        query += " SELECT Id,IdServicioDetalle, PunteoReal, Ponderacion,Observaciones  FROM  " + TBL_REVISION_DETALLE;
+        query += " WHERE 1 = 1";
         if(!IdEncabezado.isEmpty()){
-            query += " AND b.IdRevision = " + IdEncabezado;
+            query += " AND IdRevision = " + IdEncabezado;
         }
+        query += " ) b ON b.IdServicioDetalle = a.Id " ;
         query += " ORDER BY a.Id DESC ";
 
         Cursor c = db.rawQuery(query, null);

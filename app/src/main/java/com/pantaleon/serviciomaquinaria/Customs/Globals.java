@@ -17,7 +17,7 @@ public class Globals {
 
     private String WS_URL= "http://www.cybersoftgt.com/logistik/logistik/services/";
 
-    private String INFO_FILE = "https://dl.dropbox.com/s/zax9j7ndcwoq4ff/version.txt";
+    private String INFO_FILE = "";
 
     private String LINK_APP = "https://dl.dropbox.com/s/qoo0tyaqeili9fh/ServicioMaquinaria.apk";
 
