@@ -160,10 +160,9 @@ public class RevisionControler {
 
         @Override
         protected Integer doInBackground(String... strings) {
-            HttpClient httpClient = new DefaultHttpClient();
-            HttpPost post = new HttpPost(vars.getWS_URL()+ "/creaencabezado");
-            Integer valueOf = Integer.valueOf(0);
             try {
+                HttpClient httpClient = new DefaultHttpClient();
+                HttpPost post = new HttpPost(vars.getWS_URL()+ "/creaencabezado");
                 String  v_cod_boleta_revision = strings[0];
                 RevisionTecleo obj =  (RevisionTecleo) dbHandler.selectRevision(v_cod_boleta_revision).get(0);
                 JSONObject dato = new JSONObject();
@@ -185,7 +184,7 @@ public class RevisionControler {
                 post.setEntity(urlEncodedFormEntity);
                 byte[] buffer = EntityUtils.toByteArray(httpClient.execute(post).getEntity());
                 String respStr = new String(buffer);
-                this.v_mensaje = respStr.toString();
+                this.v_mensaje = respStr;
                 String str = "";
                 String str2 = "";
                 Integer valueOf2 = Integer.valueOf(0);
