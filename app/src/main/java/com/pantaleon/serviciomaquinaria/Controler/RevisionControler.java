@@ -160,7 +160,8 @@ public class RevisionControler {
 
         @Override
         protected Integer doInBackground(String... strings) {
-            HttpClient post = new HttpClient(vars.getWS_URL()+ "/creaencabezado");
+            HttpClient httpClient = new DefaultHttpClient();
+            HttpPost post = new HttpPost(vars.getWS_URL()+ "/creaencabezado");
             Integer valueOf = Integer.valueOf(0);
             try {
                 String  v_cod_boleta_revision = strings[0];
