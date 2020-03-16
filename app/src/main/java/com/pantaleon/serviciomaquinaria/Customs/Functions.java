@@ -97,9 +97,25 @@ public class Functions {
     }
 
     public String formatDateUSA(String DateString){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss",Locale.US);
-        String FechaHora = sdf.format(new Date(DateString));
+        SimpleDateFormat simpleDateFormat = new   SimpleDateFormat("dd/MM/yyyy HH:mm:ss",Locale.US);
+        SimpleDateFormat sdf = new   SimpleDateFormat("yyyy-MM-dd HH:mm:ss",Locale.US);
+        //Long date = Date.parse(DateString);
+        //String FechaHora = sdf.format(date);
+        String FechaHora =  parseDate(DateString,simpleDateFormat,sdf);
         return FechaHora;
+    }
+
+
+    private   String parseDate(String inputDateString, SimpleDateFormat inputDateFormat, SimpleDateFormat outputDateFormat) {
+        Date date = null;
+        String outputDateString = null;
+        try {
+            date = inputDateFormat.parse(inputDateString);
+            outputDateString = outputDateFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return outputDateString;
     }
 
     public  int getIndexSpn(Spinner spinner, String idCodigo){

@@ -168,7 +168,8 @@ public class RevisionControler {
                 JSONObject dato = new JSONObject();
                 dato.put("datitos", dbHandler.selectServicioDetalleJSON(v_cod_boleta_revision));
                 dato.put("cod_boleta_revision", obj.getId());
-                dato.put("fecha_revision",util.formatDateUSA(obj.getFecha()));
+                dato.put("fecha_revision",util.formatDateUSA(obj.getFecha())); //Verificar el formato
+                //dato.put("fecha_revision",obj.getFecha());
                 dato.put("cod_vehiculo", obj.getIdVehiculo());
                 dato.put("nombre_piloto", obj.getNombrePiloto());
                 dato.put("edad_piloto", obj.getEdadPiloto());
