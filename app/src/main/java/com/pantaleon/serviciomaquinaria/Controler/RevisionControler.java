@@ -139,6 +139,10 @@ public class RevisionControler {
         asyncEnviarRevision.execute(String.valueOf(cls.getId()));
     }
 
+    public void  insertupdateDetalle(String  IdEncabezado){
+        dbHandler.insertRevisionDetalle(IdEncabezado);
+    }
+
     public int insertupdateDetalle(ServicioDetalle cls){
         long id=0;
         if(cls.getIdRevisionDetalle()== 0) {

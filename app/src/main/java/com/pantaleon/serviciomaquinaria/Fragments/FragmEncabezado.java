@@ -226,6 +226,7 @@ public class FragmEncabezado extends Fragment {
             cls.setTC(((EditText) this.view.findViewById(R.id.txtTC)).getText().toString());
             if (!cls.getNombrePiloto().equals("---")) {
                 mID = String.valueOf(revisionControler.insertEncabezado(cls));
+                revisionControler.insertupdateDetalle(mID);
                 habilitaCampos(false);
                 mFragmClickListener.onClick(mID, cls.getFecha());
             } else {

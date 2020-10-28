@@ -118,6 +118,7 @@ public class ServicioDetalleAdapter
             int color =  Color.argb(255, mRandom.nextInt(256), mRandom.nextInt(256), mRandom.nextInt(256));
             holderItem.imgvwCVColor.setBackgroundColor(color);
 
+           /*
             holderItem.txtCVPunteoReal.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 @Override
                 public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
@@ -138,7 +139,29 @@ public class ServicioDetalleAdapter
                     return true;
                 }
             });
+            */
 
+            holderItem.txtCVPunteoReal.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View view, boolean b) {
+                    if(!b){
+                        if(holderItem.txtCVPunteoReal.getText().toString().isEmpty()){
+                            holderItem.txtCVPunteoReal.setText("0");
+                        }
+                        double punteoReal = Double.valueOf(holderItem.txtCVPunteoReal.getText().toString());
+                        double punteoSistema = Double.valueOf(holderItem.lblCVPunteoSistema.getText().toString());
+                        ponderasion = (int) (punteoReal * 100) / punteoSistema;
+                        holderItem.lblCVPonderacion.setText(String.valueOf((int)ponderasion));
+                        get.setPunteoReal(holderItem.txtCVPunteoReal.getText().toString());
+                        get.setObservaciones(holderItem.txtCVObservaciones.getText().toString());
+                        get.setPonderacion(String.valueOf(ponderasion));
+                        setPonderasion(get);
+                        holderItem.txtCVObservaciones.requestFocus();
+                    }
+                }
+            });
+
+            /*
             holderItem.txtCVObservaciones.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 @Override
                 public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
@@ -158,7 +181,26 @@ public class ServicioDetalleAdapter
                     return true;
                 }
             });
+             */
 
+            holderItem.txtCVObservaciones.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View view, boolean b) {
+                    if(!b){
+                        if(holderItem.txtCVPunteoReal.getText().toString().isEmpty()){
+                            holderItem.txtCVPunteoReal.setText("0");
+                        }
+                        double punteoReal = Double.valueOf(holderItem.txtCVPunteoReal.getText().toString());
+                        double punteoSistema = Double.valueOf(holderItem.lblCVPunteoSistema.getText().toString());
+                        ponderasion = (int) (punteoReal * 100) / punteoSistema;
+                        holderItem.lblCVPonderacion.setText(String.valueOf((int)ponderasion));
+                        get.setPunteoReal(holderItem.txtCVPunteoReal.getText().toString());
+                        get.setObservaciones(holderItem.txtCVObservaciones.getText().toString());
+                        get.setPonderacion(String.valueOf(ponderasion));
+                        setPonderasion(get);
+                    }
+                }
+            });
 
         } else if (holder instanceof FooterViewHolder) {
             FooterViewHolder footerHolder = (FooterViewHolder) holder;

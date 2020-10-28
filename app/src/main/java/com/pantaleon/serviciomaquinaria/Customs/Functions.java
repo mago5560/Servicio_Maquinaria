@@ -89,12 +89,6 @@ public class Functions {
         return FechaHora;
     }
 
-    public String getHoraActual(){
-        Date date = new Date();
-        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
-        String Hora = hourFormat.format(date);
-        return Hora;
-    }
 
     public String formatDateUSA(String DateString){
         SimpleDateFormat simpleDateFormat = new   SimpleDateFormat("dd/MM/yyyy HH:mm:ss",Locale.US);
@@ -118,28 +112,7 @@ public class Functions {
         return outputDateString;
     }
 
-    public  int getIndexSpn(Spinner spinner, String idCodigo){
-        int index= 0;
-        for(int i=0;i< spinner.getCount();i++){
 
-            if(getCodigo(spinner.getItemAtPosition(i).toString(),"-").equalsIgnoreCase(idCodigo)){
-                index =  i;
-                break;
-            }
-        }
-        return index;
-    }
-
-
-    public  String getCodigo(String xDescripcion,String xSeparado){
-        String [] cadena = xDescripcion.split(xSeparado);
-        return cadena[0];
-    }
-
-    public  String getDescripcion(String xDescripcion,String xSeparado){
-        String [] cadena = xDescripcion.split(xSeparado);
-        return cadena[1];
-    }
 
 
     public String getVersion( Context context) {
@@ -222,33 +195,6 @@ public class Functions {
     }
 
 
-    private static final String CERO = "0";
-    private static final String DOS_PUNTOS = ":";
-
-
-    private static final String DIAGONAL = "/";
-    public void getFechaDialog(Context context , final TextView control){
-        Calendar mcurrentDate = Calendar.getInstance();
-        int mYear = mcurrentDate.get(Calendar.YEAR);
-        int mMonth = mcurrentDate.get(Calendar.MONTH) ;
-        int mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH);
-
-        DatePickerDialog dataPickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                //Se coloca +1 debido a que android coloca el mes seleccionado -1
-                month +=1;
-                String smonth = (month < 10 ) ? String.valueOf(CERO + month) : String.valueOf(month);
-                String sdayOfMonth = (dayOfMonth < 10 ) ? String.valueOf(CERO + dayOfMonth) : String.valueOf(dayOfMonth);
-                control.setText(sdayOfMonth + DIAGONAL + smonth + DIAGONAL + year );
-            }
-        },mYear,mMonth,mDay);
-        dataPickerDialog.setTitle("Seleccione la Fecha");
-        dataPickerDialog.show();
-    }
-
-
-
     public boolean validarCampoVacio(EditText editText){
         String Cadena = editText.getText().toString();
         if(TextUtils.isEmpty(Cadena)){
@@ -296,17 +242,6 @@ public class Functions {
         return convertedDate;
     }
 
-    public Date convertToDateTime(String dateString){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
-        Date convertedDate = new Date();
-        try {
-            convertedDate = dateFormat.parse(dateString);
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return convertedDate;
-    }
 
 
 

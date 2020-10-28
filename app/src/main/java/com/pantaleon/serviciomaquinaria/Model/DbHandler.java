@@ -276,6 +276,34 @@ public class DbHandler extends SQLiteOpenHelper {
         return (int) id;
     }
 
+    public void insertRevisionDetalle(String IdEncabezado){
+
+        query = "";
+        query += "INSERT INTO " + TBL_REVISION_DETALLE +" (";
+        query += " IdRevision  "; //Encabezado
+        query += " ,IdServicioDetalle"; //Local
+        query += " ,IdServicio  "; //Ref WebServer
+        query += " ,CodRevision  "; //Ref WebServer
+        query += " ,PunteoReal  ";
+        query += " ,Ponderacion ";
+        query += " ,Observaciones  )  ";
+        query += " SELECT  ";
+        query +=  IdEncabezado ;
+        query += " , Id ";
+        query += " , IdServicio  ";
+        query += " , CodRevision  ";
+        query += " , PunteoSistema ";
+        //query += " , CAST(PunteoSistema AS INTEGER)  ";
+        query += " , '100' ";
+        query += " , '' ";
+        query += " FROM " + TBL_SERVICIO_DETALLE  ;
+        db = getWritableDatabase();
+       db.execSQL(query);
+        //Cursor c = db.rawQuery(query, null);
+        //c.close();
+        db.close();
+    }
+
     public Integer insertRevisionDetalle(ServicioDetalle cls) {
         long id = 0;
         ContentValues contentValues = new ContentValues();
